@@ -18,7 +18,7 @@ import itertools
 import os
 import os.path
 import re
-from flask import (Module, send_from_directory, render_template, json,
+from flask import (Blueprint, send_from_directory, render_template, json,
                    _request_ctx_stack, abort, url_for)
 from jinja2 import contextfunction
 from jinja2.loaders import FileSystemLoader, BaseLoader, TemplateNotFound
@@ -346,7 +346,7 @@ def template_exists(templatename):
 ### theme functionality
 
 
-themes_mod = Module(__name__, name='_themes', url_prefix='/_themes')
+themes_mod = Blueprint('_themes', __name__, url_prefix='/_themes')
 themes_mod.jinja_loader     # prevent any of the property's methods from
                             # taking effect
 themes_mod.jinja_loader = ThemeTemplateLoader(False)
