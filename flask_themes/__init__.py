@@ -332,7 +332,7 @@ class ThemeTemplateLoader(BaseLoader):
         res = []
         ctx = _request_ctx_stack.top
         fmt = '_themes/%s/%s'
-        for ident, theme in ctx.app.theme_manager.themes.iteritems():
+        for ident, theme in ctx.app.theme_manager.themes.items():
             res.extend((fmt % (ident, t)).encode("utf8")
                        for t in theme.jinja_loader.list_templates())
         return res
