@@ -194,7 +194,7 @@ def theme_paths_loader(app):
     name of its directory.
     """
     theme_paths = app.config.get('THEME_PATHS', ())
-    if isinstance(theme_paths, basestring):
+    if isinstance(theme_paths, str):
         theme_paths = [p.strip() for p in theme_paths.split(';')]
     return starchain(
         load_themes_from(path) for path in theme_paths
